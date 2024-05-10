@@ -30,7 +30,49 @@ use App\Http\Controllers\Controller;
  *             @OA\Property(property="likes", type="integer", example=20),
  *         ),
  *     ),
- * )
+ * ),
+ *
+ * @OA\Get(
+ *      path="/api/posts",
+ *      summary="List",
+ *      tags={"Post"},
+ *
+ *      @OA\Response(
+ *          response=200,
+ *          description="ok",
+ *          @OA\JsonContent(
+ *              @OA\Property(property="data", type="array", @OA\Items(
+ *                  @OA\Property(property="id", type="integer", example=1),
+ *                  @OA\Property(property="title", type="string", example="Some title"),
+ *                  @OA\Property(property="likes", type="integer", example=20),
+ *              )),
+ *          ),
+ *      ),
+ * ),
+ *
+ * @OA\Get(
+ *       path="/api/posts/{post}",
+ *       summary="One post",
+ *       tags={"Post"},
+ *
+ *       @OA\Parameter(
+ *           description="Post Id",
+ *           in="path",
+ *           name="post",
+ *           required=true,
+ *           example=1
+ *       ),
+ *
+ *       @OA\Response(
+ *           response=200,
+ *           description="ok",
+ *           @OA\JsonContent(
+ *               @OA\Property(property="id", type="integer", example=1),
+ *               @OA\Property(property="title", type="string", example="Some title"),
+ *               @OA\Property(property="likes", type="integer", example=20),
+ *           ),
+ *       ),
+ *  )
  */
 class PostController extends Controller
 {
